@@ -39,9 +39,23 @@
 
 		  <div class="collapse navbar-collapse" id="navbarColor01">
 		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Recordatorios <span class="sr-only">(current)</span></a>
-		      </li>
+				<li class="nav-item active">
+                    <a 
+                        class="nav-link" 
+                        href="#"
+                        onclick="cargarPagina('templates/agregar.js');">
+                        Agregar Recordatorio
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a 
+                        class="nav-link" 
+                        onclick="cargarPagina('templates/listar.js');"
+                        href="#">
+                        Listar Recordatorios
+                    </a>
+                </li>
 		    </ul>
 
 		    <form class="form-inline my-2 my-lg-0">
@@ -54,48 +68,9 @@
 		</nav>
 
 	    <div class="container-fluid">
+			
+			<div id="contenido"></div>
 
-	    	<div class="row">
-	    		<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="card text-black bg-success mb-3 mt-3">
-		                <div class="card-header"><h4>Nuevo Recordatorio</h4></div>
-		                <div class="card-body">
-		                  	<form class="mt-3">
-							  <fieldset>
-
-							    <div class="form-group">
-							      <label for="titulo">Título de la tarea</label>
-							      <input type="text" class="form-control" id="titulo" aria-describedby="titulo" placeholder="Ingrese un título"/>
-							    </div>
-
-							    <div class="form-group">
-							      <label for="descripcion">Descripción</label>
-							      <textarea class="form-control" id="descripcion" placeholder="Ingrese una descripción" rows="3"></textarea>
-							    </div>
-
-							    <buton class="btn btn-primary" onclick="javascript: return btnGuardarClick();">Submit</button>
-
-							  </fieldset>
-							</form>
-		                </div>
-		            </div>	    			
-	    		</div>
-	    	</div>
-
-	    	
-    		<div class="row" id="tarjetas">
-
-
-    		</div>
-
-		</div>
-
-		<script type="text/javascript">
-		    // Carga las tareas
-			window.onload = function() {
-				mostrarTarjetas();
-			}
-		</script>
 		<script type="text/javascript">
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
@@ -110,10 +85,13 @@
 				})
 			}
 		</script>
+		<script src="assets/js/handlebars-v4.1.2.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 	    <script src="assets/js/popper.min.js"></script>
 	    <script src="assets/js/bootstrap.min.js"></script>
 	    <script src="assets/js/custom.js"></script>
+	    <script src="templates/agregar.js"></script>
+	    <script src="templates/listar.js"></script>
 		<script src="assets/js/main.js"></script>
 
 	</body>
