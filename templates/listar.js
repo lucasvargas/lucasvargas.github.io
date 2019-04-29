@@ -1,4 +1,4 @@
-    		<div class="row" id="tarjetas">
+    		<div class="row mt-3" id="tarjetas">
     			{{#each this}}
     			<div class="col-sm-6 col-md-4 col-lg-3">
 	    			<div class="card text-white bg-warning mb-3">
