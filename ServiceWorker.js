@@ -22,7 +22,7 @@ self.addEventListener('install', function(event) {
         '/assets/js/jquery.min.js',
         '/assets/js/main.js',
         '/assets/js/popper.min.js',
-        '/templates/agregar.js'
+        '/templates/agregar.js',
         '/templates/listar.js'
       ]);
     })
