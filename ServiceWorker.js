@@ -17,7 +17,7 @@ self.addEventListener('install', function(event) {
         '/assets/css/bootstrap.min.css',
         '/assets/css/custom.min.css',
         '/assets/js/bootstrap.min.js',
-        '/assets/js/custom.min.js',
+        '/assets/js/custom.js',
         '/assets/js/handlebars-v4.1.2.js',
         '/assets/js/jquery.min.js',
         '/assets/js/main.js',
