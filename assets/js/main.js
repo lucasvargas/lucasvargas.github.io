@@ -26,35 +26,10 @@ var btnGuardarClick = function () {
 		document.querySelector('#titulo').value = "";
 		document.querySelector('#descripcion').value = "";
 
+		// TODO cambiar a https://sweetalert.js.org/guides/
 		alert("Tenes una nueva tarea!: \n\nTitulo: " + titulo + "\n\nDescripción: " + descripcion);
 
 	}
-}
-
-var mostrarTarjetas = function(){
-	
-	let contenido = localStorage.tareas;
-	if (contenido !== undefined){
-		cargarTarjetas(JSON.parse(localStorage.tareas));
-	}
-
-}
-
-var cargarTarjetas = function(tareas){
-
-	document.getElementById('tarjetas').innerHTML = "";
-
-	for (let tr in tareas) {
-		let count = 1 + parseInt(tr);
-	    let div = document.createElement('div');
-	    div.className ="card text-white bg-warning mb-3";
-	    div.innerHTML ="<div class='card-header'>Tarea " + count + "</div><div class='card-body'><h4 class='card-title'><span>" + tareas[tr].titulo + "</span></h4><p class='card-text'><span>" + tareas[tr].descripcion + "</span></p></div>"
-		let div_col = document.createElement('div');
-		div_col.className = "col-sm-6 col-md-4 col-lg-3";
-		div_col.appendChild(div);
-	    document.getElementById('tarjetas').appendChild(div_col);
-
-    }
 }
 
 var cargarPagina = function (archivoPagina){
@@ -71,12 +46,10 @@ var cargarPagina = function (archivoPagina){
                     let html = "";
                     if (archivoPagina == 'templates/listar.js'){
                     	let tareas = JSON.parse(localStorage.tareas)
-                    	var context = tareas;
-						html    = template(context);
+						html = template(tareas);
                     }else{
-                    	html    = template();
+                    	html = template();
                     }
-
                     $('#contenido').html(html);
             })
     })
