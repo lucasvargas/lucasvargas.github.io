@@ -14,8 +14,8 @@ self.addEventListener('install', function(event) {
       // And add resources to it
       return cache.addAll([
         '/',
-        '/assets/css/bootstrap.min.js',
-        '/assets/css/custom.min.js',
+        '/assets/css/bootstrap.min.css',
+        '/assets/css/custom.min.css',
         '/assets/js/bootstrap.min.js',
         '/assets/js/custom.min.js',
         '/assets/js/handlebars-v4.1.2.js',
