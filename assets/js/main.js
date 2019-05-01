@@ -62,11 +62,15 @@ var cargarPagina = function (archivoPagina){
 }
 
 var traerTareas = function(){
-	let tareas = JSON.parse(localStorage.tareas)
-	let buscar = document.querySelector("#buscar").value;
-	if (buscar.trim() != ""){
-		tareas = tareas.filter(x => ((x.titulo.toLowerCase().includes(buscar.toLowerCase())) ||
-		(x.descripcion.toLowerCase().includes(buscar.toLowerCase()))));
+	let lsTareas = localStorage.tareas;
+	let tareas = [];
+	if (lsTareas !== undefined){
+		tareas = JSON.parse(localStorage.tareas);
+		let buscar = document.querySelector("#buscar").value;
+		if (buscar.trim() != ""){
+			tareas = tareas.filter(x => ((x.titulo.toLowerCase().includes(buscar.toLowerCase())) ||
+			(x.descripcion.toLowerCase().includes(buscar.toLowerCase()))));
+		}
 	}
 	return tareas;
 }
