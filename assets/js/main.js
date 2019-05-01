@@ -30,7 +30,7 @@ var btnGuardarClick = function () {
 			type: "success",
 			title: "¡Nueva tarea creada!",
 			html: "<p>Titulo: " + titulo + "</p><p>Descripción: " + descripcion + "</p>",
-			confirmButtonText: '<i class="fa fa-thumbs-up"></i> Continuar!',
+			confirmButtonText: 'Continuar!',
 		});
 	}
 }
