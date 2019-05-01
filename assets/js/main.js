@@ -45,8 +45,7 @@ var cargarPagina = function (archivoPagina){
                     var template = Handlebars.compile(source);
                     let html = "";
                     if (archivoPagina == 'templates/listar.js'){
-                    	let tareas = JSON.parse(localStorage.tareas)
-						html = template(tareas);
+						html = template(traerTareas());
                     }else{
                     	html = template();
                     }
@@ -57,4 +56,14 @@ var cargarPagina = function (archivoPagina){
         console.log(error);
     });
 
+}
+
+var traerTareas = function(){
+	let tareas = JSON.parse(localStorage.tareas)
+	let buscar = document.querySelector("#buscar").value;
+	if (buscar.trim() != ""){
+		tareas = tareas.filter(x => ((x.titulo.toLowerCase().includes(buscar.toLowerCase())) ||
+		(x.descripcion.toLowerCase().includes(buscar.toLowerCase()))));
+	}
+	return tareas;
 }
