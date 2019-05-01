@@ -26,9 +26,12 @@ var btnGuardarClick = function () {
 		document.querySelector('#titulo').value = "";
 		document.querySelector('#descripcion').value = "";
 
-		// TODO cambiar a https://sweetalert.js.org/guides/
-		alert("Tenes una nueva tarea!: \n\nTitulo: " + titulo + "\n\nDescripción: " + descripcion);
-
+		Swal.fire({
+			type: "success",
+			title: "¡Nueva tarea creada!",
+			html: "<p>Titulo: " + titulo + "</p><p>Descripción: " + descripcion + "</p>",
+			confirmButtonText: '<i class="fa fa-thumbs-up"></i> Continuar!',
+		});
 	}
 }
 
