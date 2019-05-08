@@ -16,7 +16,7 @@
                                   <textarea class="form-control text-black" id="descripcion" placeholder="Ingrese una descripcion" rows="3"></textarea>
                                 </div>
 
-                                <buton class="btn btn-primary" onclick="javascript: return btnGuardarClick();">Submit</button>
+                                <buton class="btn btn-primary" onclick="javascript: return btnGuardarClick();">Agregar!</button>
 
                               </fieldset>
                             </form>
