@@ -1,3 +1,7 @@
+var HandlebarsCompile = function(source){
+	var template = Handlebars.compile(source);
+}
+
 var btnGuardarClick = function () {
 
 	let titulo = document.querySelector('#titulo').value;
@@ -45,7 +49,7 @@ var cargarPagina = function (archivoPagina){
     .then((response)=>{
         response.text()
             .then((source)=>{
-                    var template = Handlebars.compile(source);
+                    HandlebarsCompile(source);
                     let html = "";
                     if (archivoPagina == 'templates/listar.js'){
 						html = template(traerTareas());
