@@ -1,5 +1,7 @@
-var HandlebarsCompile = function(source){
-	var template = Handlebars.compile(source);
+var template;
+
+var handlebarsCompile = function(source){
+	return Handlebars.compile(source);
 }
 
 var btnGuardarClick = function () {
@@ -49,10 +51,10 @@ var cargarPagina = function (archivoPagina){
     .then((response)=>{
         response.text()
             .then((source)=>{
-                    HandlebarsCompile(source);
+                    template = handlebarsCompile(source);
                     let html = "";
                     if (archivoPagina == 'templates/listar.js'){
-						html = template(traerTareas());
+						html = template(listarTareas());
                     }else{
                     	html = template();
                     }
@@ -62,10 +64,30 @@ var cargarPagina = function (archivoPagina){
     .catch((error)=>{
         console.log(error);
     });
+}
+
+var traerTareas = function(archivoPagina){
+
+	var misCabeceras = new Headers();
+    var miInit = { method: 'GET',
+                   headers: misCabeceras,
+                   mode: 'cors',
+                   cache: 'default' };
+    fetch(archivoPagina, miInit)
+    .then((response)=>{
+        response.text()
+            .then((source)=>{
+				template = handlebarsCompile(source);
+				$('#contenido').html(template(listarTareas()));
+            })
+    })
+    .catch((error)=>{
+        console.log(error);
+    });
 
 }
 
-var traerTareas = function(){
+var listarTareas = function(buscar){
 	let lsTareas = localStorage.tareas;
 	let tareas = [];
 	if (lsTareas !== undefined){
