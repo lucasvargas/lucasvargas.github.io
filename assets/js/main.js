@@ -68,12 +68,16 @@ var cargarPagina = function (archivoPagina){
                     }
                     $('#contenido').html(html);
 
-                getUbicacion().then((objeto_position, error) => {
-                	latitud = objeto_position.coords.latitude;
-                	longitud = objeto_position.coords.longitude;
-                	document.getElementById('latitud').value = latitud;
-                	document.getElementById('longitud').value = longitud;
-            	});
+                    if (archivoPagina == 'templates/agregar.js'){
+
+	                    getUbicacion().then((objeto_position, error) => {
+		                	latitud = objeto_position.coords.latitude;
+		                	longitud = objeto_position.coords.longitude;
+		                	document.getElementById('latitud').value = latitud;
+		                	document.getElementById('longitud').value = longitud;
+		            	});
+
+                    }
             })
     })
     .catch((error)=>{
