@@ -14,7 +14,12 @@ var btnGuardarClick = function () {
 
 	if (titulo.trim() == "" || descripcion.trim() == "" ){
 
-		alert("Por favor complete los campos vacios.");
+		Swal.fire({
+			type: "error",
+			title: "¡Hay datos que faltan!",
+			html: "Por favor completá los campos vacios, titulo y/o descripción.",
+			confirmButtonText: 'Cerrar!',
+		});
 
 	}else{
 
