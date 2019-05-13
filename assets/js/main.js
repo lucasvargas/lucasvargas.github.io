@@ -127,9 +127,13 @@ var listarTareas = function(buscar){
 
 var verUbicacion = function(latitud, longitud){
 
-	let url = 'https://maps.google.com?saddr=Current+Location&daddr=' + latitud + ',' + longitud + '';
-	console.log(url);
-	window.open (url,"maps");
+    getUbicacion().then((objeto_position) => {
+    	platitud = objeto_position.coords.latitude;
+    	plongitud = objeto_position.coords.longitude;
+    	let url = 'https://maps.google.com?saddr=' + platitud + ',' + plongitud + '&daddr=' + latitud + ',' + longitud + '';
+		console.log(url);
+		window.open (url,"maps");
+	});
 
 }
 
