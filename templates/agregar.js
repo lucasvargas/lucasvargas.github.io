@@ -16,6 +16,20 @@
                                   <textarea class="form-control text-black" id="descripcion" placeholder="Ingrese una descripcion" rows="3"></textarea>
                                 </div>
 
+                                <div class="form-group">
+                                  <label for="titulo">Coordenadas</label>
+                                  <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      id="latitud"
+                                      />
+                                  <input 
+                                      type="text" 
+                                      class="form-control" 
+                                      id="longitud"
+                                      />
+                                </div>
+
                                 <buton class="btn btn-primary" onclick="javascript: return btnGuardarClick();">Agregar!</button>
 
                               </fieldset>

@@ -1,4 +1,5 @@
 var template;
+let latitud, longitud;
 
 var handlebarsCompile = function(source){
 	return Handlebars.compile(source);
@@ -8,6 +9,8 @@ var btnGuardarClick = function () {
 
 	let titulo = document.querySelector('#titulo').value;
 	let descripcion = document.querySelector('#descripcion').value;
+	let latitud = document.querySelector('#latitud').value != '' ? document.querySelector('#latitud').value : 0;
+	let longitud = document.querySelector('#longitud').value != '' ? document.querySelector('#longitud').value : 0;
 
 	if (titulo.trim() == "" || descripcion.trim() == "" ){
 
@@ -16,7 +19,12 @@ var btnGuardarClick = function () {
 	}else{
 
 		var tareas = localStorage.tareas;
-		let tarea = {'titulo': titulo , 'descripcion': descripcion};
+		let tarea = {
+					 'titulo': titulo , 
+					 'descripcion': descripcion, 
+					 'latitud': latitud, 
+					 'longitud': longitud
+					};
 
 		if (tareas === undefined){
 			let array = [];
@@ -59,6 +67,13 @@ var cargarPagina = function (archivoPagina){
                     	html = template();
                     }
                     $('#contenido').html(html);
+
+                getUbicacion().then((objeto_position, error) => {
+                	latitud = objeto_position.coords.latitude;
+                	longitud = objeto_position.coords.longitude;
+                	document.getElementById('latitud').value = latitud;
+                	document.getElementById('longitud').value = longitud;
+            	});
             })
     })
     .catch((error)=>{
@@ -100,3 +115,75 @@ var listarTareas = function(buscar){
 	}
 	return tareas;
 }
+
+var verUbicacion = function(latitud, longitud){
+
+	let url = 'https://maps.google.com?saddr=Current+Location&daddr=' + latitud + ',' + longitud + '';
+	console.log(url);
+	window.open (url,"maps");
+
+}
+
+function loaderVisible(){
+    let overlay = document.getElementById('loading');
+    overlay.classList.add('visible');
+}
+
+function loaderInvisible(){
+    let overlay = document.getElementById('loading');
+    overlay.classList.remove('visible');
+}
+
+function solicitarPermisosPush(){
+    loaderVisible();
+    return new Promise(
+    	(resolve) => {
+    		Notification.requestPermission()
+		    .then(
+		    	(function(respuesta_del_usuario){resolve(respuesta_del_usuario)})
+    		)
+		}
+	)
+	}
+
+function getUbicacion(){
+    return new Promise( (resolve, reject) => {
+        if("geolocation" in navigator){
+            navigator.geolocation
+                .getCurrentPosition(
+                    function(coordenadas){ resolve(coordenadas)}, 
+                    function(error){ reject(error)}
+                )
+        }
+    })
+}
+
+getUbicacion()
+	.then(
+		(objeto_position) => {}
+		)
+	.catch(
+		(error) => {
+			Swal.fire({
+				type: "info",
+				title: "¡Geolocalización desactivada!",
+				html: "Para tener una mejor experiencia con <strong>Memorex</strong>, active la geolocalización.",
+				confirmButtonText: 'Continuar!',
+			});
+		}
+		);
+
+solicitarPermisosPush()
+	.then(	
+		(permisos) => {
+			if (permisos != 'granted'){
+				Swal.fire({
+				type: "info",
+				title: "¡Notificaciones desactivadas!",
+				html: "Para tener una mejor experiencia con <strong>Memorex</strong>, active las notificaciones.",
+				confirmButtonText: 'Continuar!',
+				});
+			}
+			loaderInvisible();
+		}
+		);

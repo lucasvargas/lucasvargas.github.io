@@ -12,6 +12,14 @@
 							<p class="card-text">
 								<span>{{descripcion}}</span>
 							</p>
+							<p class="card-text">
+								<a href='#' onclick='verUbicacion({{latitud}},{{longitud}})'>
+								Ver Ubicación
+								</a>
+							</p>
+							<p class="card-text">
+								<span></span>
+							</p>
 						</div>
 	    			</div>
     			</div>
