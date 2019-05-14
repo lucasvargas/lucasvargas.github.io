@@ -186,8 +186,10 @@ var llamadaafetch = function(){
 }
 
 var btnGuardarPost = function(){
-    let promesaPost = fetch('https://jsonplaceholder.typicode.com/posts');
-    promesaPost
+    fetch('https://jsonplaceholder.typicode.com/posts', 
+    {
+	  method: 'POST'
+	})
     .then((result)=> 
 			Swal.fire({
 				type: "success",

@@ -95,7 +95,9 @@ self.addEventListener('push', function(event) {
   console.log(event.data);
   const title = '¡Memorex te avisa!';
   const options = {
-    body: 'Buscar pasajes, ¡Hot sale!'
+    body: 'Buscar pasajes, ¡Hot sale!',
+    icon: 'assets/img/apple-icon-60x60.png',
+    badge: 'assets/img/apple-icon-60x60.png'
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
