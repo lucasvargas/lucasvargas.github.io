@@ -77,7 +77,7 @@ self.addEventListener('sync', function(event){
   if(event.tag === 'recordatoriosPost'){
     event.waitUntil(
       new Promise((resolve, reject)=>{
-        fetch('http://jsonplaceholder.typicode.com/posts').then((result)=>{          
+        fetch('https://jsonplaceholder.typicode.com/posts').then((result)=>{          
           resolve();
         })
         .catch(()=>{
