@@ -1,3 +1,8 @@
+    		<div class="row mt-3">
+    			<div class="col-12">
+    				<button onclick="btnGuardarPost()" class="btn btn-success float-right">Guardar</button>
+    			</div>
+    		</div>
     		<div class="row mt-3" id="tarjetas">
     			{{#each this}}
     			<div class="col-sm-6 col-md-4 col-lg-3">

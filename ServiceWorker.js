@@ -31,13 +31,80 @@ self.addEventListener('install', function(event) {
   );
 });
 
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('simple-sw-v1').then(function(cache) {
+      return cache.addAll([
+        '/',
+        '/assets/css/bootstrap.min.css',
+        '/assets/css/custom.min.css',
+        '/assets/css/sweetalert2.min.css',
+        '/assets/js/bootstrap.min.js',
+        '/assets/js/custom.js',
+        '/assets/js/handlebars-v4.1.2.js',
+        '/assets/js/jquery.min.js',
+        '/assets/js/main.js',
+        '/assets/js/popper.min.js',
+        '/assets/js/sweetalert2.min.js',
+        '/templates/agregar.js',
+        '/templates/listar.js'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          // Return true if you want to remove this cache,
+          // but remember that caches are shared across
+          // the whole origin
+          if(cacheName !== 'simple-sw-v1'){return true}
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
+
+//Eventos posibles: install, activate, message, fetch, sync, push
+//install
+
+self.addEventListener('sync', function(event){
+  if(event.tag === 'recordatoriosPost'){
+    event.waitUntil(
+      new Promise((resolve, reject)=>{
+        fetch('http://jsonplaceholder.typicode.com/posts').then((result)=>{          
+          resolve();
+        })
+        .catch(()=>{
+          reject();
+        });
+      })
+      //promesa a repetirse hasta que de true
+      //una vez que da true, se vuelve a registrar un evento sync "sincronizar"
+    );  
+  }
+});
+
+self.addEventListener('push', function(event) {
+  //console.log('[Service Worker] Push Received.');
+  console.log(event.data);
+  const title = '¡Memorex te avisa!';
+  const options = {
+    body: 'Buscar pasajes, ¡Hot sale!'
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
 // The fetch event happens for the page request with the
 // ServiceWorker's scope, and any request made within that
 // page
 self.addEventListener('fetch', function(event) {
-  // Calling event.respondWith means we're in charge
-  // of providing the response. We pass in a promise
-  // that resolves with a response object
   event.respondWith(
     // First we look for something in the caches that
     // matches the request
@@ -49,5 +116,6 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+
 
 

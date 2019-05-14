@@ -171,6 +171,33 @@ function getUbicacion(){
     })
 }
 
+var llamadaafetch = function(){
+    let promesafetch = fetch('https://jsonplaceholder.typicode.com/posts/1');
+    promesafetch
+    .then((result)=> result.json())
+    .then(json => 
+    			Swal.fire({
+					type: "info",
+					title: json.title,
+					html: json.body,
+					confirmButtonText: 'Continuar!',
+				})
+    	);
+}
+
+var btnGuardarPost = function(){
+    let promesaPost = fetch('http://jsonplaceholder.typicode.com/posts');
+    promesaPost
+    .then((result)=> 
+			Swal.fire({
+				type: "success",
+				title: "¡Tus recordatorios están a salvo!",
+				html: result.statusText,
+				confirmButtonText: 'Continuar!',
+			})
+			); 
+}
+
 getUbicacion()
 	.then(
 		(objeto_position) => {}

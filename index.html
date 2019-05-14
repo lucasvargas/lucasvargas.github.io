@@ -57,7 +57,15 @@
                         Listar Recordatorios
                     </a>
                 </li>
-
+                
+                <li class="nav-item active">
+                    <a 
+                        class="nav-link"
+                        href="#"
+                        onclick="llamadaafetch()">
+                        Fetch
+                    </a>
+                </li>                
                 <li class="nav-item active">
                     <a 
                         class="nav-link"
@@ -89,9 +97,10 @@
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
 			  .register('/ServiceWorker.js')
-			  .then(function(response) {
-			    // Service worker registration done
-			    console.log('Registration Successful', response);
+	          .then(function(registration) { 
+	          	//Evento sync 
+	            registration.sync.register('recordatoriosPost');
+	            console.log("Service Worker Registrado, el scope es: " + registration.scope );
 			  })
 			  .catch(function(error) {
 			    // Service worker registration failed
