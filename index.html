@@ -97,11 +97,17 @@
 		<script type="text/javascript">
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
+			  .register('/ServiceWorker.js')
+	          .then(function(){
+	          })
+			  .catch(function(error) {
+			  })
+			  navigator.serviceWorker
 			  .ready.then(function(registration) {
 	            registration.sync.register('recordatoriosPost');
 			  })
 			  .catch(function(error) {
-				})
+			  })
 			}
 		</script>
 		<script src="assets/js/sweetalert2.min.js"></script>
