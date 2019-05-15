@@ -74,7 +74,7 @@ self.addEventListener('activate', function(event) {
 //install
 
 self.addEventListener('sync', function(event){
-  if(event.tag === 'recordatoriosPost'){
+  if(event.tag == 'recordatoriosPost'){
     event.waitUntil(
       new Promise((resolve, reject)=>{
         fetch('https://jsonplaceholder.typicode.com/posts').then((result)=>{          

@@ -97,8 +97,7 @@
 		<script type="text/javascript">
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
-			  .register('/ServiceWorker.js')
-	          .then(function(registration) {
+			  .ready.then(function(registration) {
 	            registration.sync.register('recordatoriosPost');
 			  })
 			  .catch(function(error) {
