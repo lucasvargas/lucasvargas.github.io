@@ -196,18 +196,3 @@ var btnGuardarPost = function(){
 			})
 			); 
 }
-
-solicitarPermisosPush()
-	.then(	
-		(permisos) => {
-			if (permisos != 'granted'){
-				Swal.fire({
-				type: "info",
-				title: "¡Notificaciones desactivadas!",
-				html: "Para tener una mejor experiencia con <strong>Memorex</strong>, active las notificaciones.",
-				confirmButtonText: 'Continuar!',
-				});
-			}
-			loaderInvisible();
-		}
-		);
