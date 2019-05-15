@@ -197,21 +197,6 @@ var btnGuardarPost = function(){
 			); 
 }
 
-getUbicacion()
-	.then(
-		(objeto_position) => {}
-		)
-	.catch(
-		(error) => {
-			Swal.fire({
-				type: "info",
-				title: "¡Geolocalización desactivada!",
-				html: "Para tener una mejor experiencia con <strong>Memorex</strong>, active la geolocalización.",
-				confirmButtonText: 'Continuar!',
-			});
-		}
-		);
-
 solicitarPermisosPush()
 	.then(	
 		(permisos) => {
