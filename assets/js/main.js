@@ -86,7 +86,6 @@ var cargarPagina = function (archivoPagina){
             })
     })
     .catch((error)=>{
-        console.log(error);
     });
 }
 
@@ -106,7 +105,6 @@ var traerTareas = function(archivoPagina){
             })
     })
     .catch((error)=>{
-        console.log(error);
     });
 
 }
@@ -131,7 +129,6 @@ var verUbicacion = function(latitud, longitud){
     	platitud = objeto_position.coords.latitude;
     	plongitud = objeto_position.coords.longitude;
     	let url = 'https://maps.google.com?saddr=' + platitud + ',' + plongitud + '&daddr=' + latitud + ',' + longitud + '';
-		console.log(url);
 		window.open (url,"maps");
 	});
 

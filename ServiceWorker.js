@@ -92,7 +92,7 @@ self.addEventListener('sync', function(event){
 
 self.addEventListener('push', function(event) {
   //console.log('[Service Worker] Push Received.');
-  console.log(event.data);
+  //console.log(event.data);
   const title = '¡Memorex te avisa!';
   const options = {
     body: 'Buscar pasajes, ¡Hot sale!',
