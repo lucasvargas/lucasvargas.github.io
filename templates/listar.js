@@ -18,7 +18,7 @@
 								<span>{{descripcion}}</span>
 							</p>
 							<p class="card-text">
-								<a href='#' onclick='verUbicacion({{latitud}},{{longitud}})'>
+								<a href='#' onclick='verUbicacion({{latitud}},{{longitud}})' rel="noopener">
 								Ver Ubicación
 								</a>
 							</p>
