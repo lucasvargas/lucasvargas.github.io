@@ -98,14 +98,10 @@
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
 			  .register('/ServiceWorker.js')
-	          .then(function(registration) { 
-	          	//Evento sync 
+	          .then(function(registration) {
 	            registration.sync.register('recordatoriosPost');
-	            console.log("Service Worker Registrado, el scope es: " + registration.scope );
 			  })
 			  .catch(function(error) {
-			    // Service worker registration failed
-			    console.log('Registration Failed', error);
 				})
 			}
 		</script>
