@@ -65,17 +65,7 @@
                         onclick="llamadaafetch()">
                         Fetch
                     </a>
-                </li>                
-                <li class="nav-item active">
-                    <a 
-                        class="nav-link"
-                        href="https://github.com/lucasvargas/lucasvargas.github.io"
-                        target="_blank"
-                        rel="noopener">
-                        Repositorio
-                    </a>
                 </li>
-
 		    </ul>
 
 		    <form class="form-inline my-2 my-lg-0">
@@ -94,18 +84,30 @@
 			
 			<div id="contenido"></div>
 
+		<!-- Footer -->
+		<footer id="footer">
+
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+		    <a href="https://github.com/lucasvargas/lucasvargas.github.io"> Lucas Vargas</a>
+		  </div>
+		  <!-- Copyright -->
+
+		</footer>
+		<!-- Footer -->
+
 		<script type="text/javascript">
 			if ('serviceWorker' in navigator) {
 			   navigator.serviceWorker
 			  .register('/ServiceWorker.js')
 	          .then(function(){
+	          		navigator.serviceWorker
+					  .ready.then(function(registration) {
+			            registration.sync.register('recordatoriosPost');
+					  })
+					  .catch(function(error) {
+					  })
 	          })
-			  .catch(function(error) {
-			  })
-			  navigator.serviceWorker
-			  .ready.then(function(registration) {
-	            registration.sync.register('recordatoriosPost');
-			  })
 			  .catch(function(error) {
 			  })
 			}

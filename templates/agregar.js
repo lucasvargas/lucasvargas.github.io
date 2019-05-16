@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-
+<script>
 getUbicacion()
   .then(
     (objeto_position) => {}
@@ -68,3 +68,4 @@ solicitarPermisosPush()
       loaderInvisible();
     }
     );
+  </script>
