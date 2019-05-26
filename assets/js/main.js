@@ -134,17 +134,17 @@ var verUbicacion = function(latitud, longitud){
 
 }
 
-function loaderVisible(){
+var loaderVisible = function(){
     let overlay = document.getElementById('loading');
     overlay.classList.add('visible');
 }
 
-function loaderInvisible(){
+var loaderInvisible = function(){
     let overlay = document.getElementById('loading');
     overlay.classList.remove('visible');
 }
 
-function solicitarPermisosPush(){
+var solicitarPermisosPush = function(){
     loaderVisible();
     return new Promise(
     	(resolve) => {
@@ -154,9 +154,9 @@ function solicitarPermisosPush(){
     		)
 		}
 	)
-	}
+}
 
-function getUbicacion(){
+var getUbicacion = function(){
     return new Promise( (resolve, reject) => {
         if("geolocation" in navigator){
             navigator.geolocation
@@ -169,8 +169,7 @@ function getUbicacion(){
 }
 
 var llamadaafetch = function(){
-    let promesafetch = fetch('https://jsonplaceholder.typicode.com/posts/1');
-    promesafetch
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
     .then((result)=> result.json())
     .then(json => 
     			Swal.fire({
